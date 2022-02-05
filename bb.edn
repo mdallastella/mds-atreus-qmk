@@ -1,0 +1,19 @@
+{:tasks
+ {:requires          ([babashka.fs :as fs])
+  :init              (do (defn print-public-task [k]
+                           (let [{:keys [:private :name]} (current-task)]
+                             (when-not private
+                               (println (case k :enter "·" "✓") name)))))
+  :enter             (print-public-task :enter)
+  :leave             (print-public-task :leave)
+  update-qmk         {:doc  "Update the QMK submodule repository"
+                      :task (shell {:dir "qmk"}
+                                   "git submodule update --init --recursive")}
+  copy-configuration {:doc  "Copy my Atreus keymap in the right place"
+                      :task (let [qmk-path "qmk/keyboards/keyboardio/atreus/keymaps/mds"]
+                              (fs/copy-tree "mds" qmk-path {:replace-existing true}))}
+  build-and-flash    {:doc  "Build my Atreus firmware and flash it"
+                      :task (shell {:dir "qmk"}
+                                   "make keyboardio/atreus:mds:flash")}
+  go                 {:doc     "Update my Atreus keyboard"
+                      :depends [update-qmk copy-configuration build-and-flash]}}}
