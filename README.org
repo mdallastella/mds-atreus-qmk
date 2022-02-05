@@ -1,0 +1,25 @@
+* What's this?
+
+I own a [[https://shop.keyboard.io/products/keyboardio-atreus][Keyboardio Atreus]] but switched to QMK from Kaleidoscope to
+further customize my experience.
+
+* How it works
+
+I'm using [[https://book.babashka.org/][Babashka]] as task runner, and to build and flash my keymap I
+just type:
+
+#+begin_src shell
+  bb go
+#+end_src
+
+This command will:
+- Update the QMK repository with the latest features
+- Copy my keymap (~mds~ directory) in the right place
+- Build the firmware and ask to flash it
+
+On the Atreus, to enter in "flashing mode", you need to disconnect the
+keyboard and reconnect it keeping the ~ESC~ key pressed.
+
+* License
+
+See [[file:LICENSE][LICENSE]]
