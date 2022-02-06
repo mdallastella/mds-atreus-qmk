@@ -9,7 +9,7 @@ I'm using [[https://book.babashka.org/][Babashka]] as task runner, and to build 
 just type:
 
 #+begin_src shell
-  bb go
+  bb flash
 #+end_src
 
 This command will:

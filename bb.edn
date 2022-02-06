@@ -15,5 +15,5 @@
   build-and-flash    {:doc  "Build my Atreus firmware and flash it"
                       :task (shell {:dir "qmk"}
                                    "make keyboardio/atreus:mds:flash")}
-  go                 {:doc     "Update my Atreus keyboard"
+  flash              {:doc     "Update my Atreus keyboard"
                       :depends [update-qmk copy-configuration build-and-flash]}}}
