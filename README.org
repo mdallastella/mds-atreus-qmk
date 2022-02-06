@@ -17,8 +17,8 @@ This command will:
 - Copy my keymap (~mds~ directory) in the right place
 - Build the firmware and ask to flash it
 
-On the Atreus, to enter in "flashing mode", you need to disconnect the
-keyboard and reconnect it keeping the ~ESC~ key pressed.
+On the Atreus, to enter in bootloader mode, you need to disconnect the
+keyboard and reconnect it holding the ~ESC~ key.
 
 * License
 
