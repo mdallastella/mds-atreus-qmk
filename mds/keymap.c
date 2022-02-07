@@ -1,5 +1,17 @@
 #include QMK_KEYBOARD_H
 
+// Tap Dance declare
+enum {
+  TD_BSLS_EMACS,
+};
+
+// Tap Dance definition
+qk_tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for \, twice for C-z
+  [TD_BSLS_EMACS] = ACTION_TAP_DANCE_DOUBLE(KC_BSLS, LGUI(KC_S))
+};
+
+// Layers
 enum layer_names {
   _QW,
   _L1,
@@ -9,7 +21,7 @@ enum layer_names {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QW] = LAYOUT(KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P,
                    KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN,
-                   KC_Z, KC_X, KC_C, KC_V, KC_B, KC_GRV, KC_BSLS, KC_N,
+                   KC_Z, KC_X, KC_C, KC_V, KC_B, KC_GRV, TD(TD_BSLS_EMACS), KC_N,
                    KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_ESC, KC_LCTL, KC_LGUI,
                    LALT_T(KC_RALT), KC_LSFT, KC_SPC, KC_BSPC, MO(_L1), MO(_L2),
                    KC_MINS, KC_QUOT, KC_ENT),
