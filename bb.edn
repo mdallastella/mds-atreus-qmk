@@ -7,8 +7,10 @@
   :enter             (print-public-task :enter)
   :leave             (print-public-task :leave)
   update-qmk         {:doc  "Update the QMK submodule repository"
-                      :task (shell {:dir "qmk"}
-                                   "git submodule update --init --recursive")}
+                      :task (do
+                              (shell {:dir "qmk"} "qmk clean")
+                              (shell {:dir "qmk"}
+                                     "git submodule update --init --recursive"))}
   copy-configuration {:doc  "Copy my Atreus keymap in the right place"
                       :task (let [qmk-path "qmk/keyboards/keyboardio/atreus/keymaps/mds"]
                               (fs/copy-tree "mds" qmk-path {:replace-existing true}))}
