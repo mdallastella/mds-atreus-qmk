@@ -1,21 +1,26 @@
 {:tasks
- {:requires          ([babashka.fs :as fs])
-  :init              (do (defn print-public-task [k]
-                           (let [{:keys [:private :name]} (current-task)]
-                             (when-not private
-                               (println (case k :enter "·" "✓") name)))))
-  :enter             (print-public-task :enter)
-  :leave             (print-public-task :leave)
-  update-qmk         {:doc  "Update the QMK submodule repository"
-                      :task (do
-                              (shell {:dir "qmk"} "qmk clean")
-                              (shell {:dir "qmk"}
-                                     "git submodule update --init --recursive"))}
-  copy-configuration {:doc  "Copy my Atreus keymap in the right place"
-                      :task (let [qmk-path "qmk/keyboards/keyboardio/atreus/keymaps/mds"]
-                              (fs/copy-tree "mds" qmk-path {:replace-existing true}))}
-  build-and-flash    {:doc  "Build my Atreus firmware and flash it"
-                      :task (shell {:dir "qmk"}
-                                   "make keyboardio/atreus:mds:flash")}
-  flash              {:doc     "Update my Atreus keyboard"
-                      :depends [update-qmk copy-configuration build-and-flash]}}}
+ {:requires    ([babashka.fs :as fs])
+  :init        (do (defn print-public-task [k]
+                     (let [{:keys [:private :name]} (current-task)]
+                       (when-not private
+                         (println (case k :enter "·" "✓") name)))))
+  :enter       (print-public-task :enter)
+  :leave       (print-public-task :leave)
+  update-qmk   {:doc  "Update the QMK submodule repository"
+                :task (do
+                        (shell {:dir "qmk"} "qmk clean")
+                        (shell {:dir "qmk"} "git submodule update --init --recursive"))}
+  copy-atreus  {:doc  "Copy my Atreus keymap in the right place"
+                :task (let [qmk-path "qmk/keyboards/keyboardio/atreus/keymaps/mds"]
+                        (fs/copy-tree "mds/atreus" qmk-path {:replace-existing true}))}
+  build-atreus {:doc  "Build my Atreus firmware and flash it"
+                :task (shell {:dir "qmk"} "make keyboardio/atreus:mds:flash")}
+  copy-rev41   {:doc  "Copy my Reviung41 keymap in the right place"
+                :task (let [qmk-path "qmk/keyboards/reviung/reviung41/keymaps/mds"]
+                        (fs/copy-tree "mds/reviung41" qmk-path {:replace-existing true}))}
+  build-rev41  {:doc  "Build my Reviung41 firmware and flash it"
+                :task (shell {:dir "qmk"} "make reviung/reviung41:mds:flash")}
+  flash-atreus {:doc     "Update my Atreus keyboard"
+                :depends [update-qmk copy-atreus build-atreus]}
+  flash-rev41  {:doc     "Update my Reviung41 keyboard"
+                :depends [update-qmk copy-rev41 build-rev41]}}}
