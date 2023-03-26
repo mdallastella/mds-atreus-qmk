@@ -1,4 +1,0 @@
-[submodule "qmk"]
-	path = qmk
-	url = https://github.com/vial-kb/vial-qmk.git
-	branch = master
