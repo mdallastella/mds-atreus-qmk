@@ -29,15 +29,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_NAV] = LAYOUT_split_3x5_3(
         KC_NO, KC_VOLD, KC_MUTE, KC_VOLU, KC_NO,      KC_HOME, KC_END,  KC_PGUP, KC_PGDN,  KC_DEL,
-        KC_MPRV, KC_MPLY, KC_MSTP, KC_MNXT, KC_NO,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  KC_END,
+        KC_MPRV, KC_MPLY, KC_MSTP, KC_MNXT, KC_NO,    KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,  KC_END,
         KC_NO, KC_NO, KC_NO, KC_NO, MV_LEFT,          MV_RIGHT, KC_NO, KC_NO, KC_NO, KC_NO,
                           KC_NO, KC_LGUI, KC_NO,      KC_NO, KC_NO, KC_NO
     ),
     [_NUM] = LAYOUT_split_3x5_3(
-        KC_NO,  KC_F9, KC_F10, KC_F11, KC_F12,        KC_PPLS,  KC_7,  KC_8,  KC_9, KC_PSLS,
-        KC_NO,  KC_F5,  KC_F6,  KC_F7,  KC_F8,        KC_0,  KC_4,  KC_5,  KC_6, KC_PDOT,
-        KC_NO,  KC_F1,  KC_F2,  KC_F3,  KC_F4,        KC_PMNS,  KC_1,  KC_2,  KC_3, KC_PAST,
-                        KC_NO, KC_NO, KC_NO,      KC_PEQL, KC_PENT, KC_NO
+        KC_NO,  KC_F9, KC_F10, KC_F11, KC_F12,        KC_7,  KC_8,  KC_9, KC_PLUS, KC_ASTR,
+        KC_NO,  KC_F5,  KC_F6,  KC_F7,  KC_F8,        KC_4,  KC_5,  KC_6, KC_MINS, KC_SLSH,
+        KC_NO,  KC_F1,  KC_F2,  KC_F3,  KC_F4,        KC_1,  KC_2,  KC_3, KC_EQL, KC_PERC,
+                           KC_NO, KC_NO, KC_NO,       KC_DOT, KC_0, KC_NO
     ),
     // clang-format on
 };
