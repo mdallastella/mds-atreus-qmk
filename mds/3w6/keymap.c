@@ -18,12 +18,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_MAIN] = LAYOUT_split_3x5_3(
         KC_Q,         KC_W,    KC_E,    KC_R,    KC_T,                              KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
         KC_A,         KC_S,    KC_D,    KC_F,    KC_G,                              KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,
-        LSFT_T(KC_Z), KC_X,    KC_C,    KC_V,    KC_B,                              KC_N,    KC_M,    KC_COMM, KC_DOT,  RSFT_T(KC_SLSH),
-                      LCTL_T(KC_ESC),   LT(_SYM, KC_SPC), LT(_NUM, KC_TAB),  KC_ENT, LT(_NAV, KC_BSPC), LALT_T(KC_RALT)
+        LCTL_T(KC_Z), KC_X,    KC_C,    KC_V,    KC_B,                              KC_N,    KC_M,    KC_COMM, KC_DOT,  RSFT_T(KC_SLSH),
+                      LSFT_T(KC_ESC),   LT(_SYM, KC_SPC), LT(_NUM, KC_TAB),  KC_ENT, LT(_NAV, KC_BSPC), LALT_T(KC_RALT)
     ),
     [_SYM] = LAYOUT_split_3x5_3(
-        KC_EXLM , KC_AT,   KC_HASH,  KC_DLR, KC_PERC,   KC_CIRC, KC_ASTR, KC_PIPE, KC_MINUS, KC_UNDS,
-        KC_SLSH, KC_LBRC, KC_LCBR, KC_LPRN,  KC_EQL,    KC_ASTR, KC_RPRN, KC_RCBR, KC_RBRC, KC_BSLS,
+        KC_EXLM , KC_AT,   KC_HASH,  KC_DLR, KC_PERC,   KC_CIRC, KC_AMPR, KC_ASTR, KC_MINUS, KC_UNDS,
+        KC_SLSH, KC_LBRC, KC_LCBR, KC_LPRN,  KC_EQL,    KC_PIPE, KC_RPRN, KC_RCBR, KC_RBRC, KC_BSLS,
         KC_TRNS, KC_PLUS, KC_GRV, KC_QUOTE, S(KC_QUOT), KC_NO, KC_NO, KC_MINS, KC_QUES, KC_TRNS,
                           KC_NO, KC_NO, KC_NO,          KC_NO, KC_NO, KC_NO
     ),
