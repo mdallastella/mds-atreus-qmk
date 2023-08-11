@@ -20,16 +20,21 @@
                         (fs/copy-tree "mds/reviung41" qmk-path {:replace-existing true}))}
   build-rev41  {:doc  "Build my Reviung41 firmware and flash it"
                 :task (shell {:dir "qmk"} "make reviung/reviung41:mds:flash")}
-  fix-3w6 {:doc "Rollback pico-sdk to old commit"
-           :task (shell {:dir "qmk/lib/pico-sdk"} "git checkout 8d56ea332b3734cef0a8e61f7d61f2422bd539b1")}
-  copy-3w6  {:doc  "Copy my 3w6 keymap in the right place"
-             :task (let [qmk-path "qmk/keyboards/keycapsss/3w6_2040/keymaps/mds"]
-                     (fs/copy-tree "mds/3w6" qmk-path {:replace-existing true}))}
-  build-3w6  {:doc  "Build my 3w6 (RP2040) firmware and flash it"
-              :task (shell {:dir "qmk"} "make keycapsss/3w6_2040:mds:flash")}
+  copy-3w6     {:doc  "Copy my 3w6 keymap in the right place"
+                :task (let [qmk-path "qmk/keyboards/keycapsss/3w6_2040/keymaps/mds"]
+                        (fs/copy-tree "mds/3w6" qmk-path {:replace-existing true}))}
+  build-3w6    {:doc  "Build my 3w6 (RP2040) firmware and flash it"
+                :task (shell {:dir "qmk"} "make keycapsss/3w6_2040:mds:flash")}
+  copy-sweep   {:doc  "Copy my Sweep keymap in the right place"
+                :task (let [qmk-path "qmk/keyboards/ferris/keymaps/mds"]
+                        (fs/copy-tree "mds/sweep" qmk-path {:replace-existing true}))}
+  build-sweep    {:doc  "Build my Sweep firmware and flash it"
+                  :task (shell {:dir "qmk"} "make ferris/sweep:mds:flash")}
   flash-atreus {:doc     "Update my Atreus keyboard"
                 :depends [update-qmk copy-atreus build-atreus]}
   flash-rev41  {:doc     "Update my Reviung41 keyboard"
                 :depends [update-qmk copy-rev41 build-rev41]}
-  flash-3w6  {:doc     "Update my 3w6 keyboard"
-              :depends [update-qmk fix-3w6 copy-3w6 build-3w6]}}}
+  flash-3w6    {:doc     "Update my 3w6 keyboard"
+                :depends [update-qmk copy-3w6 build-3w6]}
+  flash-sweep  {:doc     "Update my Sweep keyboard"
+                :depends [update-qmk copy-sweep build-sweep]}}}
